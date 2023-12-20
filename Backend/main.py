@@ -1,9 +1,10 @@
 from flask import Flask, jsonify, request
 from pymongo import MongoClient
 import random
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)
 client = MongoClient("mongodb://root:root@localhost:27017")
 db = client["riddles"]
 riddles_collection = db["riddles_collection"]
