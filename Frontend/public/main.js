@@ -57,7 +57,7 @@ const data = [
   
     try {
       // Make an API call to get a random riddle
-      const response = await fetch("http://192.168.0.8:5000/get_riddle");
+      const response = await fetch("http://localhost:8000/get_riddle");
       const riddleData = await response.json();
   
       // Display the retrieved riddle
