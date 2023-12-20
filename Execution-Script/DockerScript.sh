@@ -7,7 +7,7 @@
 setVariables()
 {
     #defining directory path.
-    path="/home/ankitraut0987/vpc-project"
+    path="/home/ankitraut0987/riddles-project"
 
 }
 
