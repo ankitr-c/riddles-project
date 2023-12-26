@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const newRiddle = { "riddle": riddleInput, "ans": answerInput };
 
         // Send a POST request to add the new riddle
-        fetch("http://localhost:8000/add_riddle", {
+        fetch("/add_riddle", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
