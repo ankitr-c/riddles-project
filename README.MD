@@ -6,7 +6,7 @@
     
     open main.py file in any editor.
 
-    replace this part ""Private-IP-of-your-VPC-Mongo-Database-VM"" with the private ip of your database vm.
+    replace this part "" host="localhost","" with the private ip of your database vm.
 
 # STEP 3:
     
@@ -21,7 +21,7 @@
 
     in my case it will be:
 
-        vpc-project_backend
+        riddles_project_backend
 
 # STEP 5:
 
