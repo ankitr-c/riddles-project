@@ -64,5 +64,10 @@ def get_all_riddles():
     # finally:
     #     conn.commit()
 
+@app.teardown_appcontext
+def close_db(error):
+  if conn is not None:
+    conn.close()
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8000)
