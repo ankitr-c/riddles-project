@@ -34,7 +34,7 @@ cd "$path"
 sudo docker-compose down && echo "Docker Is Down Now" || echo "Docker Already Down"
 
 # sudo docker rmi staticip-multivm-dockerproject_backend || echo "Error deleting backend image"
-sudo docker rmi vpc-project_backend || echo "Error deleting backend image"
+sudo docker rmi riddles-project_backend || echo "Error deleting backend image"
 
 
 
