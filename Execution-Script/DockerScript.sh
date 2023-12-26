@@ -55,7 +55,7 @@ cd "$path"
 sudo docker-compose down && echo "Docker Is Down Now" || echo "Docker Already Down"
 
 # sudo docker rmi staticip-multivm-dockerproject_frontend || echo "Error deleting frontend image"
-sudo docker rmi vpc-project_frontend || echo "Error deleting frontend image"
+sudo docker rmi riddles-project_frontend || echo "Error deleting frontend image"
 
 sudo docker-compose up -d || echo "error in compose file"
 
