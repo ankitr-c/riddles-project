@@ -11,7 +11,7 @@ conn = psycopg2.connect(
     dbname="riddles",
     user="postgres",
     password="root",
-    host="localhost",
+    host="192.168.3.3",
     port="5432"
 )
 
