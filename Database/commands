@@ -1,10 +1,10 @@
-docker run -d \
--p 27017:27017 \
--e MONGO_INITDB_ROOT_USERNAME:root \
--e MONGO_INITDB_ROOT_PASSWORD:root \
---name mongodb \
---net mongo-network \
-mongo
+# docker run -d \
+# -p 27017:27017 \
+# -e MONGO_INITDB_ROOT_USERNAME:root \
+# -e MONGO_INITDB_ROOT_PASSWORD:root \
+# --name mongodb \
+# --net mongo-network \
+# mongo
 
 # docker run -d `
 #   -p 27017:27017 `
@@ -16,14 +16,14 @@ mongo
 
 
 
-docker run -d \
--p 8081:8081 \
--e ME_CONFIG_MONGODB_SERVER="mongodb" \
--e ME_CONFIG_BASICAUTH_USERNAME="root" \
--e ME_CONFIG_BASICAUTH_PASSWORD="root" \
---name mongo-express \
---net mongo-network \
-mongo-express
+# docker run -d \
+# -p 8081:8081 \
+# -e ME_CONFIG_MONGODB_SERVER="mongodb" \
+# -e ME_CONFIG_BASICAUTH_USERNAME="root" \
+# -e ME_CONFIG_BASICAUTH_PASSWORD="root" \
+# --name mongo-express \
+# --net mongo-network \
+# mongo-express
 
 # docker run -d `
 #   -p 8081:8081 `
@@ -33,3 +33,10 @@ mongo-express
 #   --name mongo-express `
 #   --net mongo-network `
 #   mongo-express
+
+
+docker run -d \
+	--name postgresql \
+	-e POSTGRES_PASSWORD=root \
+	# -v /custom/mount:/var/lib/postgresql/data \
+	postgres
