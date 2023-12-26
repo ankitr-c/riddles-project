@@ -28,8 +28,10 @@ def get_riddle():
         if result:
             return jsonify({"riddle": result[0], "ans": result[1]})
         else:
+            cursor.close()
             return jsonify({"msg": "No riddles available"})
     except Exception as e:
+        cursor.close()
         return jsonify({"error": str(e)})
     # finally:
     #     conn.commit()
@@ -45,6 +47,7 @@ def add_riddle():
         cursor.close()
         return jsonify({"msg": "Riddle added successfully"})
     except Exception as e:
+        cursor.close()
         return jsonify({"error": str(e)})
     # finally:
     #     conn.commit()
@@ -60,6 +63,7 @@ def get_all_riddles():
         cursor.close()
         return jsonify(riddles_data)
     except Exception as e:
+        cursor.close()
         return jsonify({"error": str(e)})
     # finally:
     #     conn.commit()
