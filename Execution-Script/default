@@ -27,9 +27,17 @@ server {
   location / {
      proxy_pass http://0.0.0.0:3000;
   }
-  location /get_data {
+  location /get_riddle {
         # proxy_pass http://your-backend-vm-private-ip:8000/get_data;
-        proxy_pass http://192.168.1.7:8000/get_data;
+        proxy_pass http://192.168.1.7:8000/get_riddle;
+
+  }
+    location /add_riddle {
+        proxy_pass http://192.168.1.7:8000/add_riddle;
+
+  }
+    location /get_all_riddles {
+        proxy_pass http://192.168.1.7:8000/get_all_riddles;
 
   }
 }
