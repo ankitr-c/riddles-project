@@ -7,19 +7,29 @@ app = Flask(__name__)
 CORS(app)
 
 # Replace the connection parameters with your PostgreSQL database details
-conn = psycopg2.connect(
+# conn = psycopg2.connect(
+#     dbname="riddles",
+#     user="postgres",
+#     password="root",
+#     host="192.168.3.3",
+#     port="5432"
+# )
+def db_connect():
+    conn = psycopg2.connect(
     dbname="riddles",
     user="postgres",
     password="root",
     host="192.168.3.3",
     port="5432"
-)
-
+    )
+    return conn
+    
 # cursor = conn.cursor()
 
 @app.route('/get_riddle')
 def get_riddle():
     try:
+        conn=db_connect()
         cursor = conn.cursor()
         cursor.execute("SELECT riddle, ans FROM riddles_table ORDER BY RANDOM() LIMIT 1;")
         result = cursor.fetchone()
@@ -28,10 +38,8 @@ def get_riddle():
         if result:
             return jsonify({"riddle": result[0], "ans": result[1]})
         else:
-            cursor.close()
             return jsonify({"msg": "No riddles available"})
     except Exception as e:
-        cursor.close()
         return jsonify({"error": str(e)})
     # finally:
     #     conn.commit()
@@ -40,6 +48,7 @@ def get_riddle():
 def add_riddle():
     try:
         new_riddle_data = request.json
+        conn=db_connect()
         cursor = conn.cursor()
         cursor.execute("INSERT INTO riddles_table (riddle, ans) VALUES (%s, %s);",
                        (new_riddle_data.get('riddle'), new_riddle_data.get('ans')))
@@ -47,7 +56,6 @@ def add_riddle():
         cursor.close()
         return jsonify({"msg": "Riddle added successfully"})
     except Exception as e:
-        cursor.close()
         return jsonify({"error": str(e)})
     # finally:
     #     conn.commit()
@@ -55,6 +63,7 @@ def add_riddle():
 @app.route('/get_all_riddles')
 def get_all_riddles():
     try:
+        conn=db_connect()
         cursor = conn.cursor()
         cursor.execute("SELECT riddle, ans FROM riddles_table;")
         results = cursor.fetchall()
@@ -63,15 +72,9 @@ def get_all_riddles():
         cursor.close()
         return jsonify(riddles_data)
     except Exception as e:
-        cursor.close()
         return jsonify({"error": str(e)})
     # finally:
     #     conn.commit()
-
-@app.teardown_appcontext
-def close_db(error):
-  if conn is not None:
-    conn.close()
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8000)
