@@ -54,7 +54,7 @@ def add_riddle():
                        (new_riddle_data.get('riddle'), new_riddle_data.get('ans')))
         conn.commit()
         cursor.close()
-        return jsonify({"msg": "Riddle added successfully"})
+        return jsonify({"message": "Riddle added successfully"})
     except Exception as e:
         return jsonify({"error": str(e)})
     # finally:
