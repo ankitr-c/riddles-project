@@ -19,7 +19,7 @@ def db_connect():
     dbname="riddles",
     user="postgres",
     password="root",
-    host="192.168.3.3",
+    host="192.168.3.6",
     port="5432"
     )
     return conn
